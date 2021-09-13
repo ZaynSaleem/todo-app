@@ -61,7 +61,8 @@
         span.innerHTML = '<i class="fas fa-trash-alt"></i>';
         li.appendChild(span);
         span.addEventListener("click", function () {
-          close(taskarr.length + 1);
+          console.log(ls);
+          close(ls.length + 1);
         });
 
         var span = document.createElement("SPAN");
@@ -69,17 +70,24 @@
         span.innerHTML = '<i class="fas fa-edit"></i>';
         li.appendChild(span);
         span.addEventListener("click", function () {
-          edit(taskarr.length + 1);
+          edit(ls.length + 1);
+          console.log(ls.length);
         });
+
       }
+
+
 
       function edit(index) {
         let updatedList = JSON.parse(localStorage.getItem("value"));
+        console.log(updatedList,index);
         document.getElementById("myInput").value = updatedList[index];
         globalIndex = index;
         document.getElementById("addBtn").style.display = "none";
         document.getElementById("updateBtn").style.display = "block";
       }
+
+
 
       function updateElement() {
       
@@ -98,11 +106,15 @@
         document.getElementById("myInput").value = "";
       }
 
+
+
       function renderList() {
         let updatedList = JSON.parse(localStorage.getItem("value"));
     
           document.getElementById("myUL").innerHTML = "";
 
+          if(updatedList){
+          
           for (let i = 0; i < updatedList.length; i++) {
             let li = document.createElement("li");
             li.append(updatedList[i]);
@@ -127,6 +139,7 @@
             });
 
             li.appendChild(span);
+          }
           }
         }
 
