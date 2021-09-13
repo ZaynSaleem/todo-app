@@ -75,7 +75,6 @@
 
       function edit(index) {
         let updatedList = JSON.parse(localStorage.getItem("value"));
-        console.log(updatedList[index]);
         document.getElementById("myInput").value = updatedList[index];
         globalIndex = index;
         document.getElementById("addBtn").style.display = "none";
@@ -83,7 +82,7 @@
       }
 
       function updateElement() {
-        console.log(globalIndex);
+      
         let updatedValue = document.getElementById("myInput").value;
 
         let updatedList = JSON.parse(localStorage.getItem("value"));
@@ -101,9 +100,7 @@
 
       function renderList() {
         let updatedList = JSON.parse(localStorage.getItem("value"));
-        if (updatedList) {
-          console.log(updatedList);
-
+    
           document.getElementById("myUL").innerHTML = "";
 
           for (let i = 0; i < updatedList.length; i++) {
@@ -131,13 +128,7 @@
 
             li.appendChild(span);
           }
-        } else {
-          let h1 = document.createElement("h1");
-          let text = document.createTextNode("NO TASK TO SHOW");
-          h1.append(text);
-          document.getElementById("myUL").appendChild(h1);
         }
-      }
 
       function close(index) {
         let updatedList = JSON.parse(localStorage.getItem("value"));
